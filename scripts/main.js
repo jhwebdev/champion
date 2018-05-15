@@ -29,33 +29,34 @@ var champ="";
 
 var mutantArr = ['Archangel','Iceman','Wolverine','Sabretooth','Wolverine X-23','Rogue','Cable','Bishop','Nightcrawler','Psylocke','Storm','Nightcrawler','Beast','Cyclops (BlueTeam)','Cyclops (New Xavier School)','Gambit','Deadpool X-Force','Magneto','Magneto (MARVEL NOW!)','Old Man Logan', 'Colossus'];
 
-var skillArr = ['Gwenpool', 'Blade', 'Hawk Eye', 'Elektra','Daredevil (Classic)', 'Thor (Ragnarok)', 'Crossbones', 'Black Widow', 'Taskmaster','Killlmonger','Punisher','Winter Soldier','Karnak','Black Panther (Classic)','Moon Knight','Kingpin','Agent Venom','Falcon','Daredevil (Netflix)','Black Panther (Civil War)'];
+var skillArr = ['Gwenpool', 'Blade', 'Hawkeye', 'Elektra','Daredevil (Classic)', 'Thor (Ragnarok)', 'Crossbones', 'Black Widow', 'Taskmaster','Killmonger','Punisher','Winter Soldier','Karnak','Black Panther (Classic)','Moon Knight','Kingpin','Agent Venom','Falcon','Daredevil (Netflix)','Black Panther (Civil War)'];
 
 var mysticArr = ['Doctor Voodoo','Scarlet Witch','Ghost Rider','Magik','Dormammu','The Hood','Morningstar','Mephisto','Guillotine','Thor (Jane Foster)','Iron Fist','Mordo','Dr. Strange','Unstoppable Colossus','Juggernaut','Loki'];
 
-var cosmicArr = ['Medusa','Hyperion','Angela','Drax','Thor','Hela','Ms. Marvel','Captain Marvel','Black Bolt','Phoenix','Spider-Man Symbiote','Gamora','King Groot','Venom','Superior Iron Man','Venompool','Carnage','Ronan','Groot','Kamala Khan'];
+var cosmicArr = ['Medusa','Hyperion','Angela','Drax','Thor','Hela','Ms. Marvel','Captain Marvel','Black Bolt','Phoenix','Spider-Man Symbiote','Gamora','King Groot','Venom','Superior Iron Man','Venompool','Carnage','Ronan','Groot','Kamala Khan','Proxima Midnight'];
 
-var techArr = ['Spider-Man (Stark)','Star-Lord','Vision (Classic)','Vision (Age of Ultron)', 'Ultron','Doctor Octopus','Sentinel','Yondu','Green Goblin','Nebula','Punisher 2099','Rocket Raccoon','Howard The Duck','Kang','Vulture','Iron Man','Civil Warrior','War Machine','Hulk Buster','Iron Patriot'];
+var techArr = ['Spider-Man (Stark)','Star-Lord','Vision (Classic)','Vision (Age of Ultron)', 'Ultron','Doctor Octopus','Sentinel','Yondu','Green Goblin','Nebula','Punisher 2099','Rocket Raccoon','Howard The Duck','Kang','Vulture','Iron Man','Civil Warrior','War Machine','Hulkbuster','Iron Patriot'];
 
-var sciArr = ['Quake','Void','Hulk','Red Hulk','Luke Cage','Gladiator Hulk','M.O.D.O.K','Captain America WW2','Yellow Jacket','Sentry','Captain America (Classic)','Spiderman (Classic)','Electro','Spider Gwen','Spider-Man Miles Morales','Rhino','Joe Fixit','She Hulk','Ant-Man','Abomination'];
+var sciArr = ['Quake','Void','Hulk','Red Hulk','Luke Cage','Gladiator Hulk','M.O.D.O.K','Captain America WW2','Yellowjacket','Sentry','Captain America (Classic)','Spider-Man (Classic)','Electro','Spider Gwen','Spider-Man Miles Morales','Rhino','Joe Fixit','She Hulk','Ant-Man','Abomination'];
 
 var champNum = 0;
+var champArray = [];
 var typeNum=0;
-var answer = document.querySelector('#spinResult');
-crystalButton.onclick = function(){
+var answer = document.querySelector('#center_page');
+/*crystalButton.onclick = function(){
 	start();
 	
-}
+}*/
 function start(){
 	arr.length=0;
 	endArr.length =0;
 	var crystalCount = 0;
-	crystalCount = prompt('How many crystals do you want to spin? (Warning: Numbers over 10 go back to 10)');
+	crystalCount = prompt('How many crystals do you want to spin? (Warning: Numbers over 20 go back to 20)');
 	localStorage.setItem('crystals',crystalCount);
 	var crystalNum = Number(crystalCount);
-	if (crystalNum >= 11){
-		crystalNum = 10;
-	}
+	/*if (crystalNum >= 21){
+		crystalNum = 20;
+	}*/
 	for(var i = 1; i <=crystalNum; i++) {
 		arr.push(i);
 		endArr.push(i);
@@ -64,32 +65,31 @@ function start(){
 	for (var k = 0; k<arr.length;k++){
 		champ="";
 		assignChamp();
+		champArray[k] = champ;
 		if(arr[k] >=1 && arr[k]<=84)
 		{
-			endArr[k] = ' 2*'+ champ;
+			endArr[k] = '★★ '+ champ +"";
 		}
 		else if (arr[k]>=85 && arr[k]<=98){
-			endArr[k]= ' 3*'+ champ;
+			endArr[k]= '★★★ '+ champ + "";
 		}
 		else if (arr[k]>=99){
-			endArr[k]= ' 4*'+ champ;
+			endArr[k]= '★★★★ '+ champ +"";
 		}
 		else{
 			endArr[k] = 'error';
 		}
 	}
-	console.log(endArr);	
+	//console.log(endArr);	
+	console.log(champArray);
 	//var stars = endArr.sort();
-	console.log(endArr);
+	//console.log(endArr);
 	var spinAnswer = endArr.join(", ");
-	//endArr.toString();
-	//answer += endArr + "";
-	/* console.log(spinAnswer);
-	console.log(spinAns instanceof String); */
-	displayAnswer(spinAnswer);
+	makeUL(endArr, champArray);
+	//displayAnswer(spinAnswer);
 
 }
-//This function assigns a champion to the number
+
 function assignChamp(){	
 	typeNum=1;
 	typeNum=Math.floor(Math.random()*6)+1;
@@ -127,31 +127,66 @@ function assignChamp(){
 		champ = 'Thanos';
 	}
 }
-//don't know if this works, just look at concole for answers
+
+function makeUL (endArr, champArray){
+	var list = "";
+	for (var l = 0; l<endArr.length; l++){
+	 	list += "<div class='spinResult'>" + endArr[l] + "<img src='../ChampionImg/" + champArray[l] + ".png'>"+ "</div>";
+	}
+	console.log(list);
+	answer.innerHTML = ('' + list);
+}
+/*function makeUL(array) {
+    // Create the list element:
+    var list = document.createElement('ul');
+
+    for(var i = 0; i < array.length; i++) {
+        // Create the list item:
+        var item = document.createElement('li');
+
+        // Set its contents:
+        item.appendChild(document.createTextNode(array[i]));
+
+        // Add it to the list:
+        list.appendChild(item);
+    }
+
+    // Finally, return the constructed list:
+	console.log(list);
+    return list;
+}*/
+
+
 function displayAnswer(string){
-	console.log(string);
+	//console.log(string); 
 	answer.textContent = ('' + string);
 }
+
 function spinPHC (n){
 	n--;
 	for(;n>=0; n--){
 		var draw =  Math.floor(Math.random() * 100) + 1; 
 		arr[n] = draw;
-		/*if(draw >=1 && draw<=84){
-			arr[n] = draw;
-		}
-		else if (draw>=85 && draw<=98){
-			arr[n]=draw;
-		}
-		else if (draw>=99){
-			arr[n]=draw;
-		}
-		else{
-			arr[n] = draw
-		}*/
+		
 	}
 	
 }
 
+//
+//
+//
+var coll = document.getElementsByClassName("collapsible");
+var i;
 
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
 

@@ -4,6 +4,7 @@ body{
 	color: ;
 	margin:0px;
 }
+
 .threecontainer{
 	display:grid;
 	grid-template-columns:15% 1% auto;
@@ -12,7 +13,9 @@ body{
 	"header header header"
 	"navigation navigation navigation"
 	"title title title"
-	"left-1 content content"
+	"content content content"
+	"images images images"
+	"content2 content2 content2"
 	"full full full";
 	
 }
@@ -75,7 +78,6 @@ height: 50%;
 }
 
 #item{
-	display:none;
 	color:#C5A733;
 }
 
@@ -91,7 +93,13 @@ images sidebar
 */
 
 #horizontalhighlights{
-	display:none;
+	grid-area:images;
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:space-evenly;
+	width: 100%;
+	background-color: #1C2839;
+	padding-top: 3px;
 }
 
 #highlights{
@@ -101,7 +109,7 @@ images sidebar
 	justify-content:space-around;
 	padding-left: 5px;
 	padding-right:5px;
-	background-color:#FFD138;
+	background-color:#cea108;
 
 }
 
@@ -112,6 +120,11 @@ images sidebar
 
 .content{
 	grid-area:content; 
+	background-color:transparent;
+	padding: 5px;
+}
+.content2{
+	grid-area:content2; 
 	background-color:transparent;
 	padding: 5px;
 }
@@ -138,7 +151,7 @@ images sidebar
 }
 
 #full_container a {
-	color:black;
+	color:#C5A733;
 }
 #full_container a:hover{
 	color:white;
@@ -206,7 +219,7 @@ images sidebar
 .showcase{
 	color: black;
 	display:flex;
-	justify-content: space-between;
+	justify-content: space-evenly;
 }
 .showcase h2{
 	color: #FFD138;
@@ -215,9 +228,41 @@ images sidebar
 	text-shadow: 2px 2px #2e2f30;
 	font-family:'Luckiest Guy', cursive;
 }
-#spinResult{
+.spinResult{
 	color: #FFD138;
+	display:flex;
 }
+#center_page{
+	width:20%;
+	display:  flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-items: center;
+	padding = 20px;
+	
+}
+.quests{
+	color: #C5A733;
+}
+.quests a{
+	color:white;
+}
+/**/
+.btn {
+    border: none;
+    background-color: inherit;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn:hover {background: #eee;}
+/**/
+
+
+
+
 
 
 
@@ -232,17 +277,18 @@ images sidebar
 		"title"
 		"content"
 		"images"
+		"content2"
 		"full";
 	}
-	#highlights{
+	/*#highlights{
 		display:none;
-	}
+	}*/
 	#horizontalhighlights{
 	grid-area:images;
 	display:flex;
 	flex-wrap:wrap;
 	justify-content:space-evenly;
-	background-color:#FFD138;
+	background-color:#1C2839;
 	padding-top:3px;
 	}
 	#horizontalhighlights .resize{
