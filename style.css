@@ -36,7 +36,8 @@ body{
 	width: 100%;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	background: linear-gradient(180deg, #447e7f,#133160);
+	/*background: linear-gradient(180deg, #447e7f,#133160);
+	background-color: black;*/
 }
 #topbar img{
 	max-width: 80%;
@@ -48,7 +49,7 @@ body{
 	font-family:'Luckiest Guy', cursive;
 	font-size: 33pt;
 	/*background-color: #447e7f;*/
-	background-color:#8C597D;
+	background-color:#1C2839;
 }
 
 .icon{
@@ -60,7 +61,7 @@ body{
 
 .nav a{
 	color: #FFD138;
-	text-shadow: 2px 2px #2e2f30;
+	/*text-shadow: 2px 2px #2e2f30;*/
 	padding: 8px 16px;
 }
 
@@ -94,15 +95,25 @@ images sidebar
 
 #horizontalhighlights{
 	grid-area:images;
-	display:flex;
+	position: relative;
+	margin: auto;
+	width: 100%;
+	background-color: #1C2839;
+	padding-top: 3px;
+	/*grid-area:images;
+	/*display:flex;
 	flex-wrap:wrap;
 	justify-content:space-evenly;
 	width: 100%;
 	background-color: #1C2839;
-	padding-top: 3px;
+	padding-top: 3px;*/
 }
+/*#horizontalhighlights img{
+	width : 80%;
+}*/
 
-#highlights{
+
+/*#highlights{
 	grid-area: left-1;
 	display:flex;
 	flex-flow: column wrap;
@@ -111,7 +122,7 @@ images sidebar
 	padding-right:5px;
 	background-color:#cea108;
 
-}
+}*/
 
 #highlights img{
 	width: 100%;
@@ -132,7 +143,6 @@ images sidebar
 	font-family:'Luckiest Guy', cursive;
 	font-size: 25pt;
 	color: #FFD138;
-	text-shadow: 1px 1px black;
 	text-decoration: underline;
 }
 
@@ -179,6 +189,11 @@ images sidebar
 	text-decoration: underline;
 	color:white;
 }
+.collapsible{
+	display:none;
+	overflow: hidden;
+	
+}
 #mutant, #mystic, #skill, #cosmic, #tech, #science{
 	padding: 2px;
 	margin-bottom:2px;
@@ -212,12 +227,13 @@ images sidebar
 #update_container a:hover{
 	color:white;
 }
-
+.survey{
+	color: #C5A733;
+}
 .chatbox{
 	display:none;
 }
 .showcase{
-	color: black;
 	display:flex;
 	justify-content: space-evenly;
 }
@@ -225,7 +241,7 @@ images sidebar
 	color: #FFD138;
 	font-size: 24pt;
 	letter-spacing: 2px;
-	text-shadow: 2px 2px #2e2f30;
+	/*text-shadow: 2px 2px #2e2f30;*/
 	font-family:'Luckiest Guy', cursive;
 }
 .spinResult{
@@ -248,24 +264,117 @@ images sidebar
 	color:white;
 }
 /**/
-.btn {
+.spinButton {
     border: none;
     background-color: inherit;
     padding: 14px 28px;
     font-size: 16px;
     cursor: pointer;
+	color: #C5A733;
     display: inline-block;
 }
 
-.btn:hover {background: #eee;}
-/**/
+.spinButton:hover {background: #eee;}
+/*
+.spinButton{
+	
+}*/
+.collapsible{
+	 border: none;
+    background-color: inherit;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+	font-family:'Luckiest Guy', cursive;
+	font-size: 25pt;
+	color: #FFD138;
+	text-decoration: underline;
+}
+.collapsible:hover {
+	background: black;
+	}
+/*
+*/
+* {
+	box-sizing: border-box;
+}
+
+.container {
+	max-width: 1000px;
+	position: relative;
+	margin: auto;
+}
+
+.mySlides {
+	display: none;
+	transition: all .2s ease-in-out;
+}
+.mySlides:hover{
+	-webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        transform: scale(0.8);
+}
+
+.prev, .next {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	margin-top: -22px;
+	padding: 16px;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+	transition: 0.6s ease;
+	border-radius: 0 3px 3px 0;
+}
+
+.next {
+	right: 0;
+	border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+	background-color: rgba(0,0,0,0.8);
+}
+
+.text {
+	color: #f2f2f2;
+	font-size: 15px;
+	padding: 8px 12px;
+	position: absolute;
+	bottom: 8px;
+	width: 100%;
+	text-align: center;
+}
+
+.numbertext {
+	color: #f2f2f2;
+	font-size: 12px;
+	padding: 8px 12px;
+	position: absolute; 
+	top: 0;
+}
+
+.dot {
+	cursor: pointer;
+	height: 15px;
+	width: 15px;
+	margin: 0 2px;
+	background-color: #bbb;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+	background-color: #717171;
+}
 
 
 
-
-
-
-
+	
 @media screen and (max-width: 1115px){
 	.threecontainer{
 		display:grid;
@@ -285,22 +394,22 @@ images sidebar
 	}*/
 	#horizontalhighlights{
 	grid-area:images;
-	display:flex;
+	/*display:flex;
 	flex-wrap:wrap;
-	justify-content:space-evenly;
+	justify-content:space-evenly;*/
 	background-color:#1C2839;
 	padding-top:3px;
 	}
-	#horizontalhighlights .resize{
+	/*#horizontalhighlights .resize{
 		width: 100%;
-	}
+	}*/
 	.chatbox{
 		display: flex;
 	}
 	
 }
 
-@media screen and (max-width:550px){
+@media screen and (max-width:700px){
 	.nav a:not(:first-child){
 		display: none;  
 	}
